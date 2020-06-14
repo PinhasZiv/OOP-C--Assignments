@@ -17,9 +17,10 @@ cout << p2 << endl;
 cout << "(p1 == p2)? : " << (p1 == p2) << endl;
 
 p1.setToppingPrice(0, 15); // change Topping price value, to check the operators: <, >.
-cout << "p1.topings[0].price set to 15:\n" << p1.getTopings()[0] << endl;
-cout << "(p1.topings[0] < p2.topings[0])? : " << (p1.getTopings()[0] < p2.getTopings()[0]) << endl;
-cout << "(p1.topings[0] > p2.topings[0])? : "  <<(p1.getTopings()[0] > p2.getTopings()[0]) << endl;
+cout << "p1.topings[0].price set to 15:\n" << p1.getTopings() << endl;
+cout << "(p1.topings[0] < p2.topings[0])? : " << (p1.getTopings() < p2.getTopings()) << endl;
+cout << "(p1.topings[0] > p2.topings[0])? : " << (p1.getTopings() > p2.getTopings()) << endl;
+
 
 	return 0;
 }
@@ -43,9 +44,8 @@ void order(Pizza &p)
 		cin >> tmpName;
 		cout << "how to cover? " << endl;
 		cin >> tmpCover;
-		Topping tmpTop = Topping();
-		tmpTop.setName(tmpName);
-		tmpTop.setCoverege(tmpCover);
+
+		Topping tmpTop = Topping(tmpName, tmpCover);
 		p + tmpTop;
 	}
 }

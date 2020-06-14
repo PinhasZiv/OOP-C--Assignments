@@ -11,16 +11,19 @@ class Topping
 	float price; // Greater than 0
 
 public:
-
-	Topping(const char* name = nullptr, char coverege = 'f', float price = 10);
+	// Union constructor of fields and default constructor
+	Topping(const char* name, char coverege, float price = 10);
+	Topping() { this->name = NULL, this->coverege = 'f', this->price = 0;  };
 	Topping(const Topping& other);
 	~Topping();
 	void setName(const char* name);
 	void setCoverege(const char coverege);
 	void setPrice(const float price);
-	float getPrice();
+	char getCoverege() const;
+	float getPrice() const; // get the field 'price'
+	float getCalcPrice() const; // get the calculate price (depends on coverege)
 	Topping& operator=(const Topping &other);
-	friend ostream& operator<<(ostream & output, const Topping other);
+	friend ostream& operator<<(ostream & output, const Topping& other);
 	bool operator<(const Topping& other) const;
 	bool operator>(const Topping& other) const;
 	bool operator==(const Topping& other) const;

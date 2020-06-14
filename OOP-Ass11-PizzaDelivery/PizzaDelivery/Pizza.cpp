@@ -1,22 +1,21 @@
 #include "Pizza.h"
 
+// Union constructor of fields and default constructor
 Pizza::Pizza(const char* type, const float baseprice, const Topping* topings, const int num_top)
 {
-	if(type != nullptr)
+	if(type != nullptr) // For default constructor 
 		setType(type);
 	setBaseprice(baseprice);
-	if(topings != nullptr)
 		setTopings(num_top);
-	this->num_top = num_top;
 
 }
 
+// Copy constructor
 Pizza::Pizza(const Pizza& other)
 {
-	this->type = nullptr;
 	*this = other;
 }
-
+ // Destructor
 Pizza::~Pizza()
 {
 	delete[] this->type;
@@ -28,26 +27,37 @@ void Pizza::setType(const char* type)
 	if(this->type != nullptr)
 		delete[] this->type;
 	int len = strlen(type) + 1;
-	this->type = new char[strlen(type) + 1];
+	this->type = new char[len];
 	assert(this->type);
 	strcpy_s(this->type, len, type);
 }
 
 void Pizza::setBaseprice(const float baseprice)
 {
-	if (baseprice <= 0)
-		cout << "baseprice not valid" << endl;
+	if (baseprice <= 0) {
+		cout << "baseprice not valid. set to 10" << endl;
+		this->baseprice = 50;
+	}
 	else
 		this->baseprice = baseprice;
 }
 
+// Function get num of topings, set num_top field, and set the array of Toppings that size. 
 void Pizza::setTopings(const int num_top)
 {
-	this->num_top = num_top;
+	if (num_top < 0) {
+		cout << "num top not valid. set to 0." << endl;
+		this->num_top = 0;
+	} else
+		this->num_top = num_top;
 	if(this->topings != nullptr)
 		delete[] this->topings;
-	this->topings = new Topping[this->num_top];
-	assert(this->topings);
+	if (this->num_top != 0) {
+		this->topings = new Topping[this->num_top];
+		assert(this->topings);
+	}
+	else
+		this->topings = nullptr;
 }
 
 void Pizza::setToppingPrice(const int index, const float price)
@@ -55,17 +65,17 @@ void Pizza::setToppingPrice(const int index, const float price)
 	this->topings[index].setPrice(price);
 }
 
- Topping* Pizza::getTopings()
+ Topping& Pizza::getTopings() const
 {
-	return this->topings;
+	return *this->topings;
 }
 
-float Pizza::calcPrice()
+float Pizza::calcPrice() const
 {
 	float totalPrice = this->baseprice;
 	for (int i = 0; i < this->num_top; i++)
 	{
-		totalPrice += this->topings[i].getPrice();
+			totalPrice += this->topings[i].getCalcPrice();
 	}
 	return totalPrice;
 }
@@ -73,10 +83,13 @@ float Pizza::calcPrice()
 Pizza& Pizza::operator=(const Pizza& other)
 {
 	if (this != &other) {
-		setType(other.type);
-		setBaseprice(other.baseprice);
-		setTopings(other.num_top);
-		this->num_top = other.num_top;
+		this->setType(other.type);
+		this->baseprice = other.baseprice;
+		this->setTopings(other.num_top);
+		for (int i = 0; i < this->num_top; i++)
+		{
+			this->topings[i] = other.topings[i];
+		}
 	}
 	return *this;
 }
@@ -87,7 +100,7 @@ Pizza& Pizza::operator+(const Topping& other)
 	return *this;
 }
 
-bool Pizza::operator==(const Pizza& other)
+bool Pizza::operator==(const Pizza& other) const
 {
 	for (int i = 0; i < this->num_top; i++)
 	{
@@ -107,5 +120,6 @@ ostream& operator<<(ostream& output, const Pizza& other)
 	{
 		output << other.topings[i];
 	}
+	output << "Total Price: " << other.calcPrice() << endl;
 	return output;
 }
