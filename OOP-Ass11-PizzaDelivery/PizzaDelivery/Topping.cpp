@@ -1,6 +1,5 @@
 #include "Topping.h"
 
-// Union constructor of fields and default constructor
 Topping::Topping(const char* name, char coverege, float price)
 {
 	setName(name);
@@ -8,13 +7,11 @@ Topping::Topping(const char* name, char coverege, float price)
 	setPrice(price);
 }
 
-// Copy constructor
 Topping::Topping(const Topping& other)
 {
 	*this = other;
 }
 
-// Destructor
 Topping::~Topping()
 {
 	delete[] name;
@@ -24,8 +21,6 @@ void Topping::setName(const char* name)
 {
 	if (name != nullptr)
 	{
-	//	 if(this->name != nullptr)
-	//		delete[] this->name;
 		int size = strlen(name) + 1;
 		this->name = new char[size];
 		assert(this->name);
@@ -81,26 +76,22 @@ Topping& Topping::operator=(const Topping& other)
 	return *this;
 }
 
-// Load operator << to print all Topping fields (print the calcPrice of Topping. depends on coverege).
 ostream& operator<<(ostream& output, const Topping& other)
 {
 	return output << "Topping: \nname: " << other.name << ", coverage: "
 		<< other.coverege << ", price: " << other.getCalcPrice() << endl;
 }
 
-// Load Operator < to compare prices of 2 Toppings
 bool Topping::operator<(const Topping& other) const
 {
 	return (this->price < other.price);
 }
 
-// Load Operator > to compare prices of 2 Toppings
 bool Topping::operator>(const Topping& other) const
 {
 	return (this->price > other.price);
 }
 
-// Load operator == to compare 2 extras by type of cover
 bool Topping::operator==(const Topping& other) const
 {
 	return (this->coverege == other.coverege);

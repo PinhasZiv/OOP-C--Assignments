@@ -1,21 +1,19 @@
 #include "Pizza.h"
 
-// Union constructor of fields and default constructor
 Pizza::Pizza(const char* type, const float baseprice, const Topping* topings, const int num_top)
 {
 	if(type != nullptr) // For default constructor 
 		setType(type);
 	setBaseprice(baseprice);
-		setTopings(num_top);
+	setTopings(num_top);
 
 }
 
-// Copy constructor
 Pizza::Pizza(const Pizza& other)
 {
 	*this = other;
 }
- // Destructor
+
 Pizza::~Pizza()
 {
 	delete[] this->type;
@@ -35,14 +33,13 @@ void Pizza::setType(const char* type)
 void Pizza::setBaseprice(const float baseprice)
 {
 	if (baseprice <= 0) {
-		cout << "baseprice not valid. set to 10" << endl;
+		cout << "baseprice not valid. set to 50" << endl;
 		this->baseprice = 50;
 	}
 	else
 		this->baseprice = baseprice;
 }
 
-// Function get num of topings, set num_top field, and set the array of Toppings that size. 
 void Pizza::setTopings(const int num_top)
 {
 	if (num_top < 0) {
