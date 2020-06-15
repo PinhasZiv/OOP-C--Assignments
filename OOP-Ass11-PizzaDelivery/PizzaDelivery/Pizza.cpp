@@ -107,8 +107,6 @@ bool Pizza::operator==(const Pizza& other) const
 	return true;
 }
 
-
-
 ostream& operator<<(ostream& output, const Pizza& other)
 {
 	output << "Pizza:\nType: " << other.type << ", Base price: "

@@ -33,7 +33,7 @@ void order(Pizza &p)
 {
 	char tmpType[128];
 	int topingsSize;
-	cout << "Hello,\nWhat type of dough do you want to order? " << endl;
+	cout << "Hello,\nWhat type of crust do you want to order? " << endl;
 	cin >> tmpType;
 	p.setType(tmpType);
 	cout << "How many topping do you want"

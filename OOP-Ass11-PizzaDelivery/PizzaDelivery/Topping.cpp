@@ -96,4 +96,3 @@ bool Topping::operator==(const Topping& other) const
 {
 	return (this->coverege == other.coverege);
 }
-

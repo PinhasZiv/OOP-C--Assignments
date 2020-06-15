@@ -26,4 +26,3 @@ public:
 	Pizza& operator+(const Topping& other);
 	bool operator==(const Pizza& other) const;
 };
-
