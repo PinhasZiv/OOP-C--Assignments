@@ -19,9 +19,9 @@ void WildCat::make_sound()
 
 void WildCat::print()
 {
-	cout << "Age: " << this->age << ". Sound: " << this->sound
-		<< ". Tail length: " << this->tail_length << ". Num of souls: " << this->num_of_souls
-		<< ". Breed: " << this->breed << ". Hunger level: " << this->hunger_level << endl;
+	cout << "Wild Cat - Breed: " << this->breed << ", Age " << this->age
+		<< " Souls: " << this->num_of_souls << ", Tail: " << this->tail_length
+		<< "''long" << endl;
 }
 
 int WildCat::calcFood()

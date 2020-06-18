@@ -8,7 +8,7 @@ public:
 	DomesticCat(int age, const char* sound, const char* name, int itchiness_level, int tail_length, int num_of_souls, const char* breed);
 	DomesticCat(const DomesticCat& other);
 	DomesticCat& operator=(const DomesticCat& other);
-	~DomesticCat(); // check how to initialize
+	~DomesticCat(); // check if ok
 	void print();
 	void set_name(const char* name);
 	void scratch();

@@ -8,7 +8,7 @@ Cat::Cat(int age, const char* sound, int tail_length, int num_of_souls, const ch
 }
 
 Cat::Cat(const Cat& other)
-: Animal(other), tail_length(tail_length)
+: Animal(other), tail_length(other.tail_length)
 {
 	*this = other;
 }

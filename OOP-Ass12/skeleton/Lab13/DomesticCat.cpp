@@ -22,7 +22,7 @@ DomesticCat& DomesticCat::operator=(const DomesticCat& other)
 	return *this;
 }
 
-DomesticCat::~DomesticCat()
+DomesticCat::~DomesticCat() // check if ok
 {
 	delete[] this->name;
 }
@@ -42,10 +42,9 @@ void DomesticCat::set_name(const char* name)
 
 void DomesticCat::print()
 {
-	cout << "Age: " << this->age << ". Sound: " << this->sound
-		<< ". Tail length: " << this->tail_length << ". Num of souls: " << this->num_of_souls
-		<< ". Breed: " << this->breed << ". Itchiness level: " << this->itchiness_level
-		<< ". Name: " << this->name << endl;
+	cout << "Domestic Cat Name: " << this->name << ", Breed: " << this->breed
+		<< ", Age " << this->age << " Souls: " << this->num_of_souls
+		<< ", Tail: " << this->tail_length << "'' long" << endl;
 }
 
 void DomesticCat::make_sound()
