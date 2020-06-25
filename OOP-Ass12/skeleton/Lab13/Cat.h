@@ -9,7 +9,7 @@ protected:
 public:
 	Cat(int age, const char* sound, int tail_length, int num_of_souls, const char* breed);
 	Cat(const Cat& other);
-	virtual ~Cat(); // check if initialized ok
+	virtual ~Cat();
 	Cat& operator=(const Cat& other);
 	void make_fur_ball();
 	virtual int calcFood() = 0;

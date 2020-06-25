@@ -13,6 +13,7 @@ Cat::Cat(const Cat& other)
 	*this = other;
 }
 
+// initialized for delete breed field.
 Cat::~Cat()
 {
 	delete[] this->breed;

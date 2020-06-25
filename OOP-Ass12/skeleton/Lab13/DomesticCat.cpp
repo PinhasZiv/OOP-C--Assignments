@@ -22,7 +22,7 @@ DomesticCat& DomesticCat::operator=(const DomesticCat& other)
 	return *this;
 }
 
-DomesticCat::~DomesticCat() // check if ok
+DomesticCat::~DomesticCat()
 {
 	delete[] this->name;
 }
